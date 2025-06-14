@@ -6,7 +6,7 @@ Welcome to **DevFolio**, the personal portfolio of [Bhavesh Bhanusali](https://g
 
 ## 🌐 Live Demo
 
-🔗 [Visit DevFolio](https://your-live-site-link.com)
+🔗 [Visit DevFolio](https://bhavesh-bhanusali-dev-folio.vercel.app/)
 
 ---
 
@@ -115,11 +115,11 @@ npm run lint
 
 I'm Bhavesh Bhanusali, a creative web developer with a passion for delivering modern digital experiences. I enjoy solving problems and building scalable apps.
 
-💼 LinkedIn: https://www.linkedin.com/in/Bhavesh-Bhanusali
+💼 [LinkedIn](https://www.linkedin.com/in/Bhavesh-Bhanusali)
 
-💻 GitHub: http://github.com/Bhavesh884/
+💻 [GitHub](http://github.com/Bhavesh884/)
 
-✉️ Email: dev.bhavesh884@gmail.com
+✉️ [Email](dev.bhavesh884@gmail.com)
 
 ⭐️ Support & Feedback
 If you found this project useful or inspiring, leave a ⭐️ on GitHub!

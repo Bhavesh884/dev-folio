@@ -74,7 +74,7 @@ export default function SomethingIveBuilt() {
                 rel="noopener noreferrer"
               >
                 <span className="md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
-                  Expert-Connect Platform
+                  Xpert-Connect Platform
                 </span>
               </a>
             </div>
@@ -96,7 +96,7 @@ export default function SomethingIveBuilt() {
               <span className="pr-4 z-10">AWS</span>
             </ul>
             <div className="z-10 flex flex-row space-x-5">
-              <GithubIcon link="https://github.com/yourusername/ultraxpert" />
+              <GithubIcon link="https://github.com/Bhavesh884/Xpert-connect" />
               <a href="https://ultraxpert.in" target="_blank" rel="noreferrer">
                 <ExternalLink url="" router={router} />
               </a>
@@ -174,7 +174,7 @@ export default function SomethingIveBuilt() {
               <span className="pr-4 z-10">Google Maps API</span>
             </ul>
             <div className="z-10 flex flex-row space-x-5">
-              <GithubIcon link="https://github.com/yourusername/aussie-driving" />
+              <GithubIcon link="https://github.com/Bhavesh884/Aussie-Driving-School" />
               <a
                 href="https://aussiedrivingschool.com"
                 target="_blank"
@@ -196,7 +196,11 @@ export default function SomethingIveBuilt() {
         {/* Image Section */}
         <div className="hidden bg-AAprimary z-10 py-4 absolute md:grid grid-cols-12 w-full h-full content-center">
           <div className="relative rounded w-full h-full col-start-6 col-span-7">
-            <a href="[YOUR_LIVE_LINK]" target="_blank" rel="noreferrer">
+            <a
+              href="https://flavour-fusion-frontend.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="absolute w-full h-full rounded bg-AAprimary transition-opacity opacity-50 hover:opacity-0 hover:cursor-pointer duration-300"></div>
             </a>
             <Img
@@ -228,7 +232,7 @@ export default function SomethingIveBuilt() {
                 Featured Project
               </span>
               <a
-                href="[YOUR_LIVE_LINK]"
+                href="https://flavour-fusion-frontend.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -255,8 +259,12 @@ export default function SomethingIveBuilt() {
               <span className="pr-4 z-10">OAuth</span>
             </ul>
             <div className="z-10 flex flex-row space-x-5">
-              <GithubIcon link="[YOUR_GITHUB_LINK]" />
-              <a href="[YOUR_LIVE_LINK]" target="_blank" rel="noreferrer">
+              <GithubIcon link="https://github.com/Bhavesh884/Flavour-Fusion" />
+              <a
+                href="https://flavour-fusion-frontend.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <ExternalLink url={""} router={router} />
               </a>
             </div>
@@ -272,7 +280,11 @@ export default function SomethingIveBuilt() {
         {/* Image Section */}
         <div className="hidden bg-AAprimary z-10 py-4 absolute md:grid grid-cols-12 w-full h-full content-center">
           <div className="relative rounded w-full h-full col-span-7">
-            <a href="[YOUR_PORTFOLIO_LINK]" target="_blank" rel="noreferrer">
+            <a
+              href="https://bhavesh-bhanusali-dev-folio.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="absolute w-full h-full rounded bg-AAprimary transition-opacity opacity-30 hover:opacity-0 hover:cursor-pointer duration-300"></div>
             </a>
             <Img
@@ -304,7 +316,7 @@ export default function SomethingIveBuilt() {
                 Featured Project
               </span>
               <a
-                href="[YOUR_PORTFOLIO_LINK]"
+                href="https://bhavesh-bhanusali-dev-folio.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -330,15 +342,18 @@ export default function SomethingIveBuilt() {
               <span className="pr-4 z-10">Vercel</span>
             </ul>
             <div className="z-10 flex flex-row space-x-5">
-              <GithubIcon link="[YOUR_PORTFOLIO_GITHUB]" />
-              <a href="[YOUR_PORTFOLIO_LINK]" target="_blank" rel="noreferrer">
+              <GithubIcon link="https://github.com/Bhavesh884/dev-folio" />
+              <a
+                href="https://bhavesh-bhanusali-dev-folio.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <ExternalLink url={""} router={router} />
               </a>
             </div>
           </div>
         </div>
       </div>
-
       <GitHubStats />
       <Testimonials />
     </div>
