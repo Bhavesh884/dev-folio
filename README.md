@@ -2,8 +2,6 @@
 
 Welcome to **DevFolio**, the personal portfolio of [Bhavesh Bhanusali](https://github.com/Bhavesh884) – a passionate full-stack developer who blends creativity with clean code. This portfolio is built with cutting-edge tools like **Next.js**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and more.
 
-![DevFolio Banner](https://raw.githubusercontent.com/Bhavesh884/dev-folio/main/public/cover.jpg)
-
 ---
 
 ## 🌐 Live Demo
@@ -60,42 +58,58 @@ EMAIL_SERVICE=gmail
 
 # Clone the repository
 
+```
 git clone https://github.com/Bhavesh884/dev-folio.git
 cd dev-folio
+```
 
 # Install dependencies
 
+```
 npm install
+```
 
 # or
 
+```
 yarn
+```
 
 # Start the development server
 
+```
 npm run dev
+```
 
 # or
 
+```
 yarn dev
+```
 
 ## Now open http://localhost:3000 in your browser to see it live.
 
 # 🧱 Build for Production
 
+```
 npm run build
 
 npm start
+```
 
 ## To preview before deploying:
 
+```
 npm run build
 
 npm run start
+```
 
 # ✅ Linting
 
+```
 npm run lint
+```
 
 # 🙋‍♂️ About Me
 
