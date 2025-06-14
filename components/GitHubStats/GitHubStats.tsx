@@ -53,6 +53,16 @@ const GitHubStats = ({
     fetchGitHubStats();
   }, [username]);
 
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "N/A";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -67,12 +77,17 @@ const GitHubStats = ({
 
   if (!stats) return null;
 
-  // Generate contribution graph data for all years
-  const allContributions = stats.contributionGraph.weeks.flatMap((week) =>
-    week.contributionDays.map((day) => ({
-      date: new Date(day.date),
-      count: day.contributionCount,
-    }))
+  // Parse and flatten all contribution days
+  const allContributions = stats.contributionGraph.weeks.flatMap(
+    (week) =>
+      week.contributionDays
+        .map((day) => {
+          const parsedDate = new Date(day.date);
+          return isNaN(parsedDate.getTime())
+            ? null
+            : { date: parsedDate, count: day.contributionCount };
+        })
+        .filter(Boolean) as { date: Date; count: number }[]
   );
 
   // Group by year
@@ -85,6 +100,16 @@ const GitHubStats = ({
     contributionsByYear[year].push(contribution);
   });
 
+  // Get first and last contribution dates
+  const firstContribution = allContributions[0]?.date;
+  const lastContribution = allContributions[allContributions.length - 1]?.date;
+  const dateRange =
+    firstContribution && lastContribution
+      ? `${formatDate(firstContribution.toISOString())} - ${formatDate(
+          lastContribution.toISOString()
+        )}`
+      : "N/A";
+
   return (
     <div className="bg-AAprimary rounded-lg p-6 shadow-lg">
       <h2 className="text-2xl font-bold text-gray-200 mb-6">
@@ -96,17 +121,37 @@ const GitHubStats = ({
         <StatCard
           title="Total Contributions"
           value={stats.totalContributions.toLocaleString()}
-          subtitle={`${allContributions[0]?.date.toLocaleDateString()} - Present`}
+          subtitle={dateRange}
         />
         <StatCard
           title="Current Streak"
-          value={`${stats.currentStreak.length} days`}
-          subtitle={`${stats.currentStreak.start} - ${stats.currentStreak.end}`}
+          value={
+            stats.currentStreak.length > 0
+              ? `${stats.currentStreak.length} days`
+              : "No streak"
+          }
+          subtitle={
+            stats.currentStreak.start && stats.currentStreak.end
+              ? `${formatDate(stats.currentStreak.start)} - ${formatDate(
+                  stats.currentStreak.end
+                )}`
+              : "Keep contributing!"
+          }
         />
         <StatCard
           title="Longest Streak"
-          value={`${stats.longestStreak.length} days`}
-          subtitle={`${stats.longestStreak.start} - ${stats.longestStreak.end}`}
+          value={
+            stats.longestStreak.length > 0
+              ? `${stats.longestStreak.length} days`
+              : "No streak"
+          }
+          subtitle={
+            stats.longestStreak.start && stats.longestStreak.end
+              ? `${formatDate(stats.longestStreak.start)} - ${formatDate(
+                  stats.longestStreak.end
+                )}`
+              : "Start your streak!"
+          }
         />
       </div>
 
@@ -117,7 +162,7 @@ const GitHubStats = ({
         </h3>
         <div className="space-y-6">
           {Object.entries(contributionsByYear)
-            .sort(([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA))
+            .sort(([a], [b]) => parseInt(b) - parseInt(a))
             .map(([year, contributions]) => (
               <ContributionGraph
                 key={year}
@@ -151,11 +196,11 @@ const StatCard = ({
 );
 
 const CONTRIBUTION_COLORS = [
-  "bg-gray-700", // 0 contributions
-  "bg-blue-500", // 1-3 contributions
-  "bg-blue-400", // 4-6 contributions
-  "bg-blue-300", // 7-9 contributions
-  "bg-blue-200", // 10+ contributions
+  "bg-gray-700",
+  "bg-blue-500",
+  "bg-blue-400",
+  "bg-blue-300",
+  "bg-blue-200",
 ];
 
 const getContributionColor = (count: number) => {
@@ -173,22 +218,20 @@ const ContributionGraph = ({
   year: number;
   contributions: { date: Date; count: number }[];
 }) => {
-  // Group by week
+  // Group by weeks
   const weeks: { startDate: Date; days: { date: Date; count: number }[] }[] =
     [];
   let currentWeek: (typeof weeks)[0] | null = null;
 
   contributions.forEach((contribution) => {
-    const dayOfWeek = contribution.date.getDay(); // 0 = Sunday, 6 = Saturday
-
+    const dayOfWeek = contribution.date.getDay(); // 0 = Sunday
     if (dayOfWeek === 0 || !currentWeek) {
       currentWeek = {
-        startDate: new Date(contribution.date),
+        startDate: contribution.date,
         days: [],
       };
       weeks.push(currentWeek);
     }
-
     currentWeek.days.push(contribution);
   });
 
@@ -217,30 +260,23 @@ const ContributionGraph = ({
           </div>
         ))}
       </div>
+
       {/* Legend */}
       <div className="flex justify-end mt-2 space-x-4">
         <div className="flex items-center">
-          <div
-            className={`h-3 w-3 rounded-sm ${CONTRIBUTION_COLORS[1]} mr-1`}
-          />
+          <div className="h-3 w-3 rounded-sm bg-blue-500 mr-1" />
           <span className="text-xs text-gray-400">1-3</span>
         </div>
         <div className="flex items-center">
-          <div
-            className={`h-3 w-3 rounded-sm ${CONTRIBUTION_COLORS[2]} mr-1`}
-          />
+          <div className="h-3 w-3 rounded-sm bg-blue-400 mr-1" />
           <span className="text-xs text-gray-400">4-6</span>
         </div>
         <div className="flex items-center">
-          <div
-            className={`h-3 w-3 rounded-sm ${CONTRIBUTION_COLORS[3]} mr-1`}
-          />
+          <div className="h-3 w-3 rounded-sm bg-blue-300 mr-1" />
           <span className="text-xs text-gray-400">7-9</span>
         </div>
         <div className="flex items-center">
-          <div
-            className={`h-3 w-3 rounded-sm ${CONTRIBUTION_COLORS[4]} mr-1`}
-          />
+          <div className="h-3 w-3 rounded-sm bg-blue-200 mr-1" />
           <span className="text-xs text-gray-400">10+</span>
         </div>
       </div>
@@ -249,18 +285,3 @@ const ContributionGraph = ({
 };
 
 export default GitHubStats;
-
-// const stats = {
-//   totalContributions: 0,
-//   currentStreak: {
-//     length: 0,
-//     start: "",
-//     end: "",
-//   },
-//   longestStreak: {
-//     length: 0,
-//     start: "",
-//     end: "",
-//   },
-//   contributionsByYear: {},
-// };
