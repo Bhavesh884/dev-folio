@@ -36,9 +36,12 @@ const About = () => {
         </div>
         <div className="font-Header text-gray-400 text-justify">
           I&apos;ve had the opportunity to work with companies like{" "}
-          <span className="text-AAsecondary">Ultra Creation</span> and{" "}
-          <span className="text-AAsecondary">Blu Ocean Innovations</span>, where
-          I built MERN-based platforms, improved performance metrics, and
+          <span className="text-AAsecondary">Ultra Creation IT Solutions</span>,{" "}
+          <span className="text-AAsecondary">
+            CuFront Healthcare Technologies
+          </span>{" "}
+          and <span className="text-AAsecondary">Blu Ocean Innovations</span>,
+          where I built MERN-based platforms, improved performance metrics, and
           collaborated in agile teams. I’ve also served as a{" "}
           <span className="text-AAsecondary">
             Teaching Assistant at Codemistic

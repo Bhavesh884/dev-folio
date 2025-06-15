@@ -14,9 +14,9 @@ export default function UltraCreation() {
     <div>
       <div className="mb-6">
         <h3 className="text-xl font-semibold text-white">
-          Full Stack Developer @ Ultra Creation IT Solutions
+          MERN Stack Developer @ Ultra Creation IT Solutions
         </h3>
-        <span className="text-sm text-gray-400">Jan 2024 – Present</span>
+        <span className="text-sm text-gray-400">Jan 2024 – Feb 2025</span>
       </div>
 
       <ul className="space-y-3">
